@@ -28,8 +28,10 @@ CREATE TABLE wagon_classification (
 
 CREATE TABLE wagon_compatible_commodity (
     id VARCHAR(20) PRIMARY KEY,
-    commodity_id VARCHAR(20) NOT NULL,
-    wagon_classification_id VARCHAR(20) NOT NULL,
+    commodity_id VARCHAR(20) NOT NULL
+        REFERENCES commodity(id) ON DELETE RESTRICT,
+    wagon_classification_id VARCHAR(20) NOT NULL
+        REFERENCES wagon_classification(id) ON DELETE RESTRICT,
 );
 
 -- Relationship Notes:
@@ -47,7 +49,8 @@ CREATE TABLE wagon_compatible_commodity (
 CREATE TABLE wagon (
     id VARCHAR(20) PRIMARY KEY,
     running_number VARCHAR(36) NOT NULL,
-    wagon_classification_id VARCHAR(20) NOT NULL,
+    wagon_classification_id VARCHAR(20) NOT NULL
+        REFERENCES wagon_classification(id) ON DELETE RESTRICT,
     capacity int NOT NULL
 );
 
