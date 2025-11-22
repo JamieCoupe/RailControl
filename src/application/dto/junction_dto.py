@@ -1,0 +1,2 @@
+class JunctionDTO:
+    pass

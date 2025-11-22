@@ -1,0 +1,5 @@
+presentation/
+  cli/
+    main.py
+  web/
+    (optional later)

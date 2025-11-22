@@ -1,0 +1,2 @@
+class IndustryOutputDTO:
+    pass

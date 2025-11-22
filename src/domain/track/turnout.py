@@ -1,0 +1,2 @@
+class Turnout:
+    pass

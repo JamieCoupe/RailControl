@@ -1,0 +1,2 @@
+class WagonClassification:
+    pass

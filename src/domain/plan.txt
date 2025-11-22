@@ -1,0 +1,26 @@
+domain/
+  track/
+    TrackSection.py
+    Road.py
+    RoadSegment.py
+    Turnout.py
+    Junction.py
+    SpeedRestriction.py
+    …
+  station/
+    Station.py
+    Platform.py
+  industry/
+    Industry.py
+    IndustryInput.py
+    IndustryOutput.py
+  rolling_stock/
+    Wagon.py
+    WagonType.py
+    Locomotive.py
+  timetable/
+    TrainService.py
+    Timetable.py
+  freight/
+    Waybill.py
+    FreightDemand.py
