@@ -8,6 +8,7 @@ class JunctionType(Enum):
 
 class TrackBlockType(Enum):
     MAINLINE = "mainline"
+    PASSING_LOOP = "passing_loop"
     BRANCH = "branch"
     SIDING = "siding"
     SHED = "shed"

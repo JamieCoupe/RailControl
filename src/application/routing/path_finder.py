@@ -24,12 +24,6 @@ class Dijkstra:
             if current_node == end:
                 break
 
-            # For each neighbour reachable from this current node:
-            #       - calculate new_distance = distance[current] + edge.weight
-            #       - if new_distance is smaller than distance[neighbour]:
-            #             update distance[neighbour]
-            #             update previous[neighbour] = current node or edge
-
             for edge in edges[current_node]:
                 neighbour = edge.to_node
 
