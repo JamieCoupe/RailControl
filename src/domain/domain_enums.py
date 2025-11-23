@@ -13,3 +13,15 @@ class TrackBlockType(Enum):
     SIDING = "siding"
     SHED = "shed"
     HEADSHUNT = "headshunt"
+
+class TurnoutState(Enum):
+    STRAIGHT = "straight"
+    DIVERGING = "diverging"
+
+class TurnoutType(Enum):
+    STANDARD_LEFT = "standard_left"
+    STANDARD_RIGHT = "standard_right"
+    Y_TURNOUT = "y_turnout"
+    DOUBLE_SLIP = "double_slip"
+    SINGLE_SLIP = "single_slip"
+    SCISSOR_CROSSING = "scissor_crossing"
