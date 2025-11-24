@@ -1,6 +1,5 @@
 from src.domain.domain_enums import TurnoutType, TurnoutState
 
-
 class Turnout:
     def __init__(self,
                  id: str,

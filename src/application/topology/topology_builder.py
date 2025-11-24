@@ -1,11 +1,13 @@
 from src.application.routing.routing_graph import RoutingGraph
 from src.application.routing.routing_node import RoutingNode
 from src.application.routing.routing_edge import RoutingEdge
+from src.domain.domain_enums import TurnoutState
 from src.domain.track.track_block import  TrackBlock, PlatformTrackBlock, IndustryTrackBlock
 from src.infrastructure.repository.junction_repository import JunctionRepository
 from src.infrastructure.repository.track_block_repository import TrackBlockRepository
 from src.infrastructure.repository.track_section_repository import TrackSectionRepository
 from src.application.utils.scale_conversion import travel_time_seconds
+from src.infrastructure.repository.turnout_repository import TurnoutRepository
 
 
 class TopologyBuilder:
@@ -13,11 +15,13 @@ class TopologyBuilder:
             self,
             junction_repository: JunctionRepository,
             track_section_repository: TrackSectionRepository,
-            track_block_repository: TrackBlockRepository
+            track_block_repository: TrackBlockRepository,
+            turnout_repository: TurnoutRepository
         ):
         self.junction_repository = junction_repository
         self.track_section_repository = track_section_repository
         self.track_block_repository = track_block_repository
+        self.turnout_repository = turnout_repository
 
     def build_graph(self):
         #Initilise Graph Objects
@@ -26,6 +30,7 @@ class TopologyBuilder:
         #Load Domain Objects
         junctions = self.junction_repository.get_all()
         track_sections = self.track_section_repository.get_all()
+        turnouts = self.turnout_repository.get_all()
 
         #Create RoutingNode for each junction
         for junction in junctions:
@@ -77,9 +82,34 @@ class TopologyBuilder:
                 travel_time_s,
                 block_class,
                 block_type)
-
             route_graph.edges[start_junction].append(route_edge_fwd)
             route_graph.edges[end_junction].append(route_edge_rev)
+
+        # turnout
+        turnout_by_section = {}
+        for turnout in turnouts:
+            turnout_by_section[turnout.straight_section_id] = turnout
+            turnout_by_section[turnout.diverging_section_id] = turnout
+
+        for node_id in route_graph.edges:
+            valid_edge_list = []
+            for edge in route_graph.edges[node_id]:
+                if edge.track_section_id in turnout_by_section:
+                    turnout = turnout_by_section[edge.track_section_id]
+                    if ((
+                            turnout.current_state == TurnoutState.STRAIGHT
+                            and edge.track_section_id == turnout.straight_section_id)
+                            or
+                            (turnout.current_state == TurnoutState.DIVERGING
+                             and edge.track_section_id == turnout.diverging_section_id)
+                    ):
+                        valid_edge_list.append(edge)
+                    else:
+                        continue
+                else:
+                    valid_edge_list.append(edge)
+            route_graph.edges[node_id] = valid_edge_list
+
 
         #Construct the Routing Graph
         return route_graph
