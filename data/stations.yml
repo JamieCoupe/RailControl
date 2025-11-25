@@ -1,0 +1,24 @@
+stations:
+  - id: STN_RNFR
+    name: Renfrew
+    platforms:
+      - id: STN_RNFR_P1
+        track_block_id: BLK_10
+        platform_number: 1
+        dwell_time_minutes: 1
+        platform_length_mm: 600
+
+      - id: STN_RNFR_P2
+        track_block_id: BLK_11
+        platform_number: 2
+        dwell_time_minutes: 1
+        platform_length_mm: 600
+
+  - id: STN_ABTI
+    name: Abbots Inch
+    platforms:
+      - id: STN_ABTI_P1
+        track_block_id: BLK_20
+        platform_number: 1
+        dwell_time_minutes: 1
+        platform_length_mm: 600

@@ -1,3 +1,5 @@
+import logging
+
 from src.application.routing.routing_graph import RoutingGraph
 from src.application.routing.routing_node import RoutingNode
 from src.application.routing.routing_edge import RoutingEdge
@@ -8,6 +10,8 @@ from src.infrastructure.repository.track_block_repository import TrackBlockRepos
 from src.infrastructure.repository.track_section_repository import TrackSectionRepository
 from src.application.utils.scale_conversion import travel_time_seconds
 from src.infrastructure.repository.turnout_repository import TurnoutRepository
+
+logger = logging.getLogger(__name__)
 
 
 class TopologyBuilder:
@@ -24,6 +28,7 @@ class TopologyBuilder:
         self.turnout_repository = turnout_repository
 
     def build_graph(self):
+        logger.debug("Building routing graph...")
         #Initilise Graph Objects
         route_graph = RoutingGraph()
 
@@ -31,10 +36,12 @@ class TopologyBuilder:
         junctions = self.junction_repository.get_all()
         track_sections = self.track_section_repository.get_all()
         turnouts = self.turnout_repository.get_all()
+        logger.debug(f"Loaded {len(junctions)} junctions, {len(track_sections)} sections, {len(turnouts)} turnouts")
 
         #Create RoutingNode for each junction
         for junction in junctions:
             route_graph.nodes[junction.junction_id] = RoutingNode(junction.junction_id)
+        logger.debug(f"Created {len(route_graph.nodes)} routing nodes")
 
         #Build Adjacency list
         for node in route_graph.nodes:
@@ -86,6 +93,7 @@ class TopologyBuilder:
             route_graph.edges[end_junction].append(route_edge_rev)
 
         # turnout
+        logger.debug("Applying turnout state filtering...")
         turnout_by_section = {}
         for turnout in turnouts:
             turnout_by_section[turnout.straight_section_id] = turnout
@@ -105,6 +113,9 @@ class TopologyBuilder:
                     ):
                         valid_edge_list.append(edge)
                     else:
+                        logger.info(
+                            f"Turnout {turnout.id} blocking section {edge.track_section_id} due to state {turnout.current_state}")
+
                         continue
                 else:
                     valid_edge_list.append(edge)

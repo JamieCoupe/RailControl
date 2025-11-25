@@ -1,0 +1,20 @@
+industries:
+  - id: IND_COAL_MINE
+    name: Inchinnan Docks
+    industry_type: DISTRIBUTION
+
+    inputs: []
+    outputs:
+      - commodity_id: COM_COAL
+        amount: 40
+
+  - id: IND_FUEL
+    name: Renfrew Fuels Terminal
+    industry_type: TERMINAL
+
+    inputs:
+      - commodity_id: COM_CRUDEOIL
+        amount: 20
+    outputs:
+      - commodity_id: COM_AVGAS
+        amount: 10

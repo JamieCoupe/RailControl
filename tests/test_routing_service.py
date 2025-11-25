@@ -357,13 +357,14 @@ def test_mainline_only_allows_passing_loops():
 
     result = service.find_route_by_request(req)
 
-    assert result.success, "Route should be found using MAINLINE + PASSING LOOP"
-
-    # Validate the route used J2 as intermediate node
+    assert result.success
     assert result.node_ids == ["J1", "J2", "J3"]
+    assert "B_LOOP" in result.block_ids
 
-    # And it must include the passing loop block
-    assert any(
-        block_id == "B_LOOP"
-        for block_id in result.block_ids
-    ), "Route must include the passing loop block"
+    def test_routing_fails_when_turnout_blocks_path():
+
+        graph = build_manual_test_graph()
+        service = RoutingService(graph)
+
+        result = service.find_route("J1", "J3")  # only reachable via diverging
+        assert not result.success

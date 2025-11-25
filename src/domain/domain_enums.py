@@ -25,3 +25,10 @@ class TurnoutType(Enum):
     DOUBLE_SLIP = "double_slip"
     SINGLE_SLIP = "single_slip"
     SCISSOR_CROSSING = "scissor_crossing"
+
+class IndustryType(Enum):
+    TERMINAL = "terminal"
+    DISTRIBUTION = "distribution"
+    FACTORY = "factory"
+    MINE = "mine"
+    REPAIR = "repair"

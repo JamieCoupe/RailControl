@@ -111,6 +111,22 @@ def test_turnout_filters_straight_when_diverging():
     # Ensure J1→J2 has been filtered out
     assert all(edge.to_node != "J2" for edge in graph.edges["J1"])
 
+def test_turnout_filters_diverging_when_straight():
+    topology = TopologyBuilder(
+        JunctionRepository(),
+        TrackSectionRepository(),
+        TrackBlockRepository(),
+        TurnoutRepository(TurnoutState.STRAIGHT)
+    )
+
+    graph = topology.build_graph()
+
+    # J1 should only have an edge to J3 (the diverging route)
+    assert len(graph.edges["J1"]) == 1
+    assert graph.edges["J1"][0].to_node == "J2"
+
+    # Ensure J1→J2 has been filtered out
+    assert all(edge.to_node != "J3" for edge in graph.edges["J1"])
 
 
 def test_turnout_does_not_affect_unrelated_sections():

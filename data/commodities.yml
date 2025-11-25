@@ -1,0 +1,15 @@
+commodities:
+  - id: COAL
+    name: Coal
+    unit: tons
+    default_wagon_classification: HOPPER
+
+  - id: OIL
+    name: Crude Oil
+    unit: tons
+    default_wagon_classification: TANKER
+
+  - id: AVGAS
+    name: Aviation Gas
+    unit: tons
+    default_wagon_classification: TANKER
