@@ -15,6 +15,7 @@ class StationYamlLoader:
         - ensure top-level 'stations' exists
         - return raw dict
         """
+        logger.debug(f"Loading YAML file: {self.path}")
         stations = {}
 
         with open(self.path, "r") as yaml_file_stream:
@@ -33,4 +34,5 @@ class StationYamlLoader:
         if "stations" not in stations.keys():
             raise KeyError("YAML missing required top-level key 'stations'")
 
+        logger.info(f"Loaded {len(stations)} raw items from {self.path}")
         return stations

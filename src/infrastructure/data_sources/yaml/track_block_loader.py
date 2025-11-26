@@ -15,6 +15,8 @@ class TrackBlockYamlLoader:
         - ensure top-level 'track_blocks' exists
         - return raw dict
         """
+
+        logger.debug(f"Loading YAML file: {self.path}")
         track_blocks = {}
 
         with open(self.path, "r") as yaml_file_stream:
@@ -33,4 +35,5 @@ class TrackBlockYamlLoader:
         if "track_blocks" not in track_blocks.keys():
             raise KeyError("YAML missing required top-level key 'track_blocks'")
 
+        logger.info(f"Loaded {len(track_blocks)} raw items from {self.path}")
         return track_blocks

@@ -3,5 +3,5 @@ track_sections:
     block_id: BLK_MAIN_1
     start_junction_id: J_RNFR_EAST
     end_junction_id: J_ABTI_WEST
-    length_mm: 1200
+    length_mm: 1000
     max_speed: 80

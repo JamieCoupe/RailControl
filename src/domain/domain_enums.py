@@ -3,7 +3,7 @@ from enum import Enum
 class JunctionType(Enum):
     PLAIN = "plain"
     TURNOUT = "turnout"
-    CROSSING = "crossing"
+    CROSSOVER = "crossover"
     BUFFER = "buffer"
 
 class TrackBlockType(Enum):
@@ -13,6 +13,8 @@ class TrackBlockType(Enum):
     SIDING = "siding"
     SHED = "shed"
     HEADSHUNT = "headshunt"
+    PLATFORM = "platform"
+    LOADING = "loading_unloading"
 
 class TurnoutState(Enum):
     STRAIGHT = "straight"
@@ -32,3 +34,9 @@ class IndustryType(Enum):
     FACTORY = "factory"
     MINE = "mine"
     REPAIR = "repair"
+
+class WagonType(Enum):
+    TANKER = "tanker"
+    OPEN = "open"
+    HOPPER = "hopper"
+    FLAT = "flat"

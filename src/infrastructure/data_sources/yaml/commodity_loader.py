@@ -4,7 +4,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class CommoditiesYamlLoader:
+class CommodityYamlLoader:
     def __init__(self, path:str):
         self.path = path
 
@@ -15,6 +15,7 @@ class CommoditiesYamlLoader:
         - ensure top-level 'commodities' exists
         - return raw dict
         """
+        logger.debug(f"Loading YAML file: {self.path}")
         commodities = {}
 
         with open(self.path, "r") as yaml_file_stream:
@@ -33,4 +34,5 @@ class CommoditiesYamlLoader:
         if "commodities" not in commodities.keys():
             raise KeyError("YAML missing required top-level key 'commodities'")
 
+        logger.info(f"Loaded {len(commodities)} raw items from {self.path}")
         return commodities

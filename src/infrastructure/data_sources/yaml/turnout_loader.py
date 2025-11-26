@@ -15,6 +15,7 @@ class TurnoutYamlLoader:
         - ensure top-level 'turnout' exists
         - return raw dict
         """
+        logger.debug(f"Loading YAML file: {self.path}")
         turnouts = {}
 
         with open(self.path, "r") as yaml_file_stream:
@@ -33,4 +34,5 @@ class TurnoutYamlLoader:
         if "turnouts" not in turnouts.keys():
             raise KeyError("YAML missing required top-level key 'turnouts'")
 
+        logger.info(f"Loaded {len(turnouts)} raw items from {self.path}")
         return turnouts

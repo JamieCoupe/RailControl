@@ -7,7 +7,6 @@ from src.infrastructure.repository.industry_repository import IndustryRepository
 
 from src.infrastructure.data_sources.yaml.industry_loader import IndustryYamlLoader
 
-
 class YamlIndustryRepository(IndustryRepository):
 
     def __init__(self, loader: IndustryYamlLoader):

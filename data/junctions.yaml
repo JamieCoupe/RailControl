@@ -1,0 +1,12 @@
+junctions:
+  - id: J_RNFR_EAST
+    name: Renfrew East Junction
+    type: STANDARD
+
+  - id: J_RNFR_WEST
+    name: Renfrew West Junction
+    type: CROSSOVER
+
+  - id: J_ABTI_WEST
+    name: Abbots Inch West Junction
+    type: STANDARD

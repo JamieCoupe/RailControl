@@ -15,6 +15,7 @@ class IndustryYamlLoader:
         - ensure top-level 'industries' exists
         - return raw dict
         """
+        logger.debug(f"Loading YAML file: {self.path}")
         industry_dict = {}
 
         with open(self.path, "r") as yaml_file_stream:
@@ -33,4 +34,5 @@ class IndustryYamlLoader:
         if "industries" not in industry_dict.keys():
             raise KeyError("YAML missing required top-level key 'industries'")
 
+        logger.info(f"Loaded {len(industry_dict)} raw items from {self.path}")
         return industry_dict

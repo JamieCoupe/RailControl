@@ -1,7 +1,7 @@
-from src.domain.industry.commodity import Commodity
+from src.domain.freight.commodity import Commodity
 
 class CommodityRepository:
-    def get(self, commmodity_id: str) -> Commodity:
+    def get(self, commodity_id: str) -> Commodity:
         raise NotImplementedError
-    def list_all(self) -> list[Commodity]:
+    def get_all(self) -> list[Commodity]:
         raise NotImplementedError

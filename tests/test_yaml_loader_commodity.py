@@ -1,4 +1,4 @@
-from src.infrastructure.data_sources.yaml.commodities_loader import CommoditiesYamlLoader
+from src.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlLoader
 import pytest
 
 def test_yaml_is_loaded(tmp_path):
@@ -21,7 +21,7 @@ def test_yaml_is_loaded(tmp_path):
         default_wagon_classification: TANKER
     """)
 
-    loader = CommoditiesYamlLoader(str(yaml_file))
+    loader = CommodityYamlLoader(str(yaml_file))
     data = loader.load()
 
     assert "commodities" in data
@@ -34,6 +34,6 @@ def test_validation_for_invalid_yaml(tmp_path):
     - world
     """)
 
-    loader = CommoditiesYamlLoader(str(yaml_file))
+    loader = CommodityYamlLoader(str(yaml_file))
     with pytest.raises(ValueError):
         loader.load()

@@ -5,3 +5,5 @@ class TrackSectionRepository:
         raise NotImplementedError
     def get_all(self) -> list[TrackSection]:
         raise NotImplementedError
+    def get_by_block_id(self, block_id) -> list[TrackSection]:
+        raise NotImplementedError
