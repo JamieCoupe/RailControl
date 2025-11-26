@@ -1,5 +1,6 @@
 import pytest
 
+from src.domain.domain_enums import TrackBlockType
 from src.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
 
 def test_yaml_is_loaded(tmp_path):
@@ -35,7 +36,7 @@ def test_yaml_is_loaded(tmp_path):
     data = loader.load()
 
     assert "track_blocks" in data
-    assert data["track_blocks"][0]["id"] == "BLK_10"
+    assert data["track_blocks"][0]['id'] == "BLK_10"
 
 def test_validation_for_invalid_yaml(tmp_path):
     yaml_file = tmp_path / "track_blocks.yaml"
