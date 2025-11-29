@@ -8,13 +8,13 @@ from src.infrastructure.repository.yaml.yaml_junction_repository import YamlJunc
 def test_junction_repo_loads_junctions_correctly(tmp_path):
     yaml_text = """
     junctions:
-      - id: J1
+      - junction_id: J1
         name: Renfrew East Junction
-        type: plain
+        junction_type: STANDARD
 
-      - id: J2
+      - junction_id: J2
         name: Renfrew West Junction
-        type: crossover
+        junction_type: CROSSOVER
     """
 
     yaml_file = tmp_path / "junctions.yaml"
@@ -28,7 +28,7 @@ def test_junction_repo_loads_junctions_correctly(tmp_path):
 
     assert j1.junction_id == "J1"
     assert j1.name == "Renfrew East Junction"
-    assert j1.junction_type == JunctionType.PLAIN
+    assert j1.junction_type == JunctionType.STANDARD
 
     assert j2.junction_type == JunctionType.CROSSOVER
 
@@ -36,9 +36,9 @@ def test_junction_repo_loads_junctions_correctly(tmp_path):
 def test_junction_repo_raises_for_missing_id(tmp_path):
     yaml_text = """
     junctions:
-      - id: J1
+      - junction_id: J1
         name: Test Junction
-        type: plain
+        junction_type: STANDARD
     """
 
     yaml_file = tmp_path / "junctions.yaml"

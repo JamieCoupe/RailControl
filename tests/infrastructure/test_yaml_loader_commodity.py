@@ -2,7 +2,7 @@ from src.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlL
 import pytest
 
 def test_yaml_is_loaded(tmp_path):
-    yaml_file = tmp_path / "commodities.yaml"
+    yaml_file = tmp_path / "commodities.yml"
     yaml_file.write_text("""
     commodities:
       - id: COAL
@@ -28,7 +28,7 @@ def test_yaml_is_loaded(tmp_path):
     assert data["commodities"][0]["id"] == "COAL"
 
 def test_validation_for_invalid_yaml(tmp_path):
-    yaml_file = tmp_path / "commodities.yaml"
+    yaml_file = tmp_path / "commodities.yml"
     yaml_file.write_text("""
     - hello
     - world

@@ -5,7 +5,7 @@ from src.infrastructure.data_sources.yaml.junction_loader import JunctionYamlLoa
 def test_junction_loader_reads_yaml(tmp_path):
     yaml_text = """
     junctions:
-      - id: J1
+      - junction_id: J1
         name: Renfrew East
         type: standard
     """
@@ -17,7 +17,7 @@ def test_junction_loader_reads_yaml(tmp_path):
     data = loader.load()
 
     assert "junctions" in data
-    assert data["junctions"][0]["id"] == "J1"
+    assert data["junctions"][0]["junction_id"] == "J1"
     assert data["junctions"][0]["type"] == "standard"
 
 

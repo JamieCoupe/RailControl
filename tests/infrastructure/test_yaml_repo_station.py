@@ -11,7 +11,8 @@ def test_station_repo_loads_stations_correctly(tmp_path):
         track_blocks:
           - id: BLK_P1
             name: Renfrew Platform 1
-            block_type: PLATFORM
+            block_type: PLATFORM_TRACK
+            block_class: PLATFORM
             station_id: STN_RNFR
             dwell_time_minutes: 1
             platform_number: 1
@@ -50,7 +51,8 @@ def test_station_repo_loads_stations_correctly_with_no_platforms(tmp_path):
         track_blocks:
           - id: BLK_P1
             name: Renfrew Platform 1
-            block_type: PLATFORM
+            block_type: PLATFORM_TRACK
+            block_class: PLATFORM
             station_id: STN_RNFR
             dwell_time_minutes: 1
             platform_number: 1
@@ -88,7 +90,8 @@ def test_repo_raises_for_missing_stations(tmp_path):
             track_blocks:
               - id: BLK_P1
                 name: Renfrew Platform 1
-                block_type: PLATFORM
+                block_type: PLATFORM_TRACK
+                block_class: PLATFORM
                 station_id: STN_RNFR
                 dwell_time_minutes: 1
                 platform_number: 1

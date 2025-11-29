@@ -1,4 +1,4 @@
-from src.domain.domain_enums import JunctionType, TrackBlockType, TurnoutType, TurnoutState
+from src.domain.domain_enums import JunctionType, TrackBlockType, TurnoutType, TurnoutState, TrackBlockClass
 from src.domain.track.junction import Junction
 from src.application.topology.topology_builder import TopologyBuilder
 from src.domain.track.track_block import TrackBlock
@@ -10,9 +10,9 @@ from src.domain.track.turnout import Turnout
 class JunctionRepository:
     def get_all(self):
         return [
-            Junction("J1", "One", JunctionType.PLAIN),
-            Junction("J2", "Two", JunctionType.PLAIN),
-            Junction("J3", "Three", JunctionType.PLAIN),
+            Junction("J1", "One", JunctionType.STANDARD),
+            Junction("J2", "Two", JunctionType.STANDARD),
+            Junction("J3", "Three", JunctionType.STANDARD),
         ]
 
 class TrackSectionRepository:
@@ -24,7 +24,7 @@ class TrackSectionRepository:
 
 class TrackBlockRepository:
     def get(self,id):
-        return TrackBlock("B1","TestBlockOne",TrackBlockType.MAINLINE)
+        return TrackBlock("B1","TestBlockOne",TrackBlockType.MAINLINE, TrackBlockClass.MAINLINE)
 
 class TurnoutRepository:
     def __init__(self, state):
