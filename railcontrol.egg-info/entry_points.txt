@@ -1,0 +1,2 @@
+[console_scripts]
+railcontrol = railcontrol.presentation.cli.main:app
