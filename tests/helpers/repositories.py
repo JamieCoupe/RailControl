@@ -1,7 +1,7 @@
 from tests.helpers.domains import (
     StubJunction, StubTrackSection, StubTrackBlock, StubTurnout
 )
-from src.domain.domain_enums import TrackBlockType, TurnoutState
+from railcontrol.domain.domain_enums import TrackBlockType, TurnoutState
 
 
 class StubJunctionRepository:

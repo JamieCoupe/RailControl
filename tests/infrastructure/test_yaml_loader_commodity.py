@@ -1,4 +1,4 @@
-from src.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlLoader
 import pytest
 
 def test_yaml_is_loaded(tmp_path):

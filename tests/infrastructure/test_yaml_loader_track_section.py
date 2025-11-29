@@ -1,6 +1,6 @@
 import pytest
 
-from src.infrastructure.data_sources.yaml.track_section_loader import TrackSectionYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.track_section_loader import TrackSectionYamlLoader
 
 def test_yaml_is_loaded(tmp_path):
     yaml_file = tmp_path / "track_sections.yaml"

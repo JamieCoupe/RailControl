@@ -1,8 +1,8 @@
 import pytest
 
-from src.domain.domain_enums import TurnoutType, TurnoutState
-from src.infrastructure.data_sources.yaml.turnout_loader import TurnoutYamlLoader
-from src.infrastructure.repository.yaml.yaml_turnout_repository import YamlTurnoutRepository
+from railcontrol.domain.domain_enums import TurnoutType, TurnoutState
+from railcontrol.infrastructure.data_sources.yaml.turnout_loader import TurnoutYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_turnout_repository import YamlTurnoutRepository
 
 
 def test_turnout_repo_loads_turnouts_correctly(tmp_path):

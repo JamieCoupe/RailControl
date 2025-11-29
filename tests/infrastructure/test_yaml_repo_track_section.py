@@ -1,7 +1,7 @@
 import pytest
 
-from src.infrastructure.data_sources.yaml.track_section_loader import TrackSectionYamlLoader
-from src.infrastructure.repository.yaml.yaml_track_section_repository import YamlTrackSectionRepository
+from railcontrol.infrastructure.data_sources.yaml.track_section_loader import TrackSectionYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_track_section_repository import YamlTrackSectionRepository
 
 
 def test_track_section_repo_loads_track_section_correctly(tmp_path):

@@ -1,6 +1,6 @@
 import pytest
 
-from src.infrastructure.data_sources.yaml.turnout_loader import TurnoutYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.turnout_loader import TurnoutYamlLoader
 
 
 def test_yaml_is_loaded(tmp_path):

@@ -1,7 +1,7 @@
 import pytest
 
-from src.domain.domain_enums import TrackBlockType
-from src.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
+from railcontrol.domain.domain_enums import TrackBlockType
+from railcontrol.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
 
 def test_yaml_is_loaded(tmp_path):
     yaml_file = tmp_path / "track_blocks.yaml"

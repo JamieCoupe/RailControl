@@ -1,7 +1,7 @@
-from src.application.routing.path_finder import Dijkstra
-from src.application.routing.routing_graph import RoutingGraph
-from src.application.routing.routing_node import RoutingNode
-from src.application.routing.routing_edge import RoutingEdge
+from railcontrol.application.routing.path_finder import Dijkstra
+from railcontrol.application.routing.routing_graph import RoutingGraph
+from railcontrol.application.routing.routing_node import RoutingNode
+from railcontrol.application.routing.routing_edge import RoutingEdge
 
 def build_manual_test_graph():
     graph = RoutingGraph()

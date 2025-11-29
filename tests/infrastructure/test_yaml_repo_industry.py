@@ -1,8 +1,8 @@
 import pytest
 
-from src.domain.domain_enums import IndustryType
-from src.infrastructure.data_sources.yaml.industry_loader import IndustryYamlLoader
-from src.infrastructure.repository.yaml.yaml_industry_repository import YamlIndustryRepository
+from railcontrol.domain.domain_enums import IndustryType
+from railcontrol.infrastructure.data_sources.yaml.industry_loader import IndustryYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_industry_repository import YamlIndustryRepository
 
 
 def test_industry_repo_loads_industries_correctly(tmp_path):

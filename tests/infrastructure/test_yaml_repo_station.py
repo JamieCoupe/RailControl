@@ -1,9 +1,9 @@
 import pytest
 
-from src.infrastructure.data_sources.yaml.station_loader import StationYamlLoader
-from src.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
-from src.infrastructure.repository.yaml.yaml_station_repository import YamlStationRepository
-from src.infrastructure.repository.yaml.yaml_track_block_repository import YamlTrackBlockRepository
+from railcontrol.infrastructure.data_sources.yaml.station_loader import StationYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_station_repository import YamlStationRepository
+from railcontrol.infrastructure.repository.yaml.yaml_track_block_repository import YamlTrackBlockRepository
 
 
 def test_station_repo_loads_stations_correctly(tmp_path):

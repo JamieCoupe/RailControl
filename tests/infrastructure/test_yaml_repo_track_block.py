@@ -1,9 +1,9 @@
 import pytest
 
-from src.domain.domain_enums import TrackBlockType, TrackBlockClass
-from src.domain.track.track_block import TrackBlock, PlatformTrackBlock, IndustryTrackBlock
-from src.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
-from src.infrastructure.repository.yaml.yaml_track_block_repository import YamlTrackBlockRepository
+from railcontrol.domain.domain_enums import TrackBlockType, TrackBlockClass
+from railcontrol.domain.track.track_block import TrackBlock, PlatformTrackBlock, IndustryTrackBlock
+from railcontrol.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_track_block_repository import YamlTrackBlockRepository
 
 def test_track_block_repo_loads_plain_block(tmp_path):
     yaml_text = """

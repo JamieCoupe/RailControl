@@ -1,7 +1,7 @@
 import pytest
 import os
 
-from src.infrastructure.providers.repository_provider import RepositoryProvider
+from railcontrol.infrastructure.providers.repository_provider import RepositoryProvider
 
 
 def write_yaml(path, text):

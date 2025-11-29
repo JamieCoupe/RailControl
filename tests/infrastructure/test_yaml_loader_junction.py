@@ -1,5 +1,5 @@
 import pytest
-from src.infrastructure.data_sources.yaml.junction_loader import JunctionYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.junction_loader import JunctionYamlLoader
 
 
 def test_junction_loader_reads_yaml(tmp_path):

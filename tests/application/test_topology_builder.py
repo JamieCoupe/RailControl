@@ -1,9 +1,9 @@
-from src.domain.domain_enums import JunctionType, TrackBlockType, TurnoutType, TurnoutState, TrackBlockClass
-from src.domain.track.junction import Junction
-from src.application.topology.topology_builder import TopologyBuilder
-from src.domain.track.track_block import TrackBlock
-from src.domain.track.track_section import TrackSection
-from src.domain.track.turnout import Turnout
+from railcontrol.domain.domain_enums import JunctionType, TrackBlockType, TurnoutType, TurnoutState, TrackBlockClass
+from railcontrol.domain.track.junction import Junction
+from railcontrol.application.topology.topology_builder import TopologyBuilder
+from railcontrol.domain.track.track_block import TrackBlock
+from railcontrol.domain.track.track_section import TrackSection
+from railcontrol.domain.track.turnout import Turnout
 
 
 #Setup

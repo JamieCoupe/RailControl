@@ -1,12 +1,12 @@
 import pytest
 
-from src.domain.domain_enums import TrackBlockType, TrackBlockClass
-from src.domain.station.passenger_stop import PassengerStop
-from src.domain.station.station import Station
-from src.domain.timetable.passenger_route import PassengerRoute
-from src.domain.track.track_block import PlatformTrackBlock
-from src.application.routing.passenger_route_expander import PassengerRouteExpander
-from src.domain.track.track_section import TrackSection
+from railcontrol.domain.domain_enums import TrackBlockType, TrackBlockClass
+from railcontrol.domain.station.passenger_stop import PassengerStop
+from railcontrol.domain.station.station import Station
+from railcontrol.domain.timetable.passenger_route import PassengerRoute
+from railcontrol.domain.track.track_block import PlatformTrackBlock
+from railcontrol.application.routing.passenger_route_expander import PassengerRouteExpander
+from railcontrol.domain.track.track_section import TrackSection
 
 
 class DummyBlockRepo:
@@ -47,8 +47,8 @@ class DummyRoutingService:
         class R:
             success = True
             path_nodes = [a, b]
-            node_ids = [a, b]      # <-- REQUIRED FIX
-            edge_ids = []          # no edges in dummy scenario
+            node_ids = [a, b]
+            edge_ids = []
             message = ""
         return R()
 

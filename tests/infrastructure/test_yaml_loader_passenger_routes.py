@@ -1,6 +1,6 @@
 import pytest
 
-from src.infrastructure.data_sources.yaml.passenger_route_loader import PassengerRouteYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.passenger_route_loader import PassengerRouteYamlLoader
 
 
 def test_yaml_is_loaded(tmp_path):

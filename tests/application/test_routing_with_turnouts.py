@@ -1,6 +1,6 @@
-from src.application.routing.routing_service import RoutingService
-from src.application.topology.topology_builder import TopologyBuilder
-from src.domain.domain_enums import TurnoutState
+from railcontrol.application.routing.routing_service import RoutingService
+from railcontrol.application.topology.topology_builder import TopologyBuilder
+from railcontrol.domain.domain_enums import TurnoutState
 
 from tests.helpers.repositories import (
     StubJunctionRepository,

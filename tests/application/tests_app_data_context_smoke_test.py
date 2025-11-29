@@ -1,4 +1,4 @@
-from src.application.app_context import AppDataContext
+from railcontrol.application.app_context import AppDataContext
 
 def write_yaml(path, text):
     path.write_text(text.strip() + "\n")

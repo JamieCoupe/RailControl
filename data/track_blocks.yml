@@ -23,7 +23,7 @@ track_blocks:
     block_type: PLATFORM_TRACK
     block_class: PLATFORM
     station_id: STN_RNFR
-    dwell_time_minutes: 1
+    dwell_time_minutes: 5
     platform_number: 3
 
   - id: BLK_RNFR_P4
@@ -31,7 +31,7 @@ track_blocks:
     block_type: PLATFORM_TRACK
     block_class: PLATFORM
     station_id: STN_RNFR
-    dwell_time_minutes: 1
+    dwell_time_minutes: 6
     platform_number: 4
 
   # -----------------------
@@ -65,3 +65,10 @@ track_blocks:
     name: Diverging Route at TN
     block_type: MAINLINE
     block_class: MAINLINE
+
+  - id: BLK_Industry_1
+    name: Loading Road in industry 1
+    block_type: SIDING
+    block_class: INDUSTRY
+    industry_id: IND_FUEL
+    load_time_minutes: 10

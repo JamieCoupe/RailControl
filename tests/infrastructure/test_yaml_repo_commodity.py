@@ -1,8 +1,8 @@
 import pytest
 
-from src.domain.domain_enums import WagonType
-from src.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlLoader
-from src.infrastructure.repository.yaml.yaml_commodity_repository import YamlCommodityRepository
+from railcontrol.domain.domain_enums import WagonType
+from railcontrol.infrastructure.data_sources.yaml.commodity_loader import CommodityYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_commodity_repository import YamlCommodityRepository
 
 
 def test_commodity_repo_loads_commodity_correctly(tmp_path):

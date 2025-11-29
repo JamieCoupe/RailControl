@@ -1,8 +1,8 @@
 import pytest
 
-from src.domain.domain_enums import Direction
-from src.infrastructure.data_sources.yaml.passenger_route_loader import PassengerRouteYamlLoader
-from src.infrastructure.repository.yaml.yaml_passenger_route_repository import YamlPassengerRouteRepository
+from railcontrol.domain.domain_enums import Direction
+from railcontrol.infrastructure.data_sources.yaml.passenger_route_loader import PassengerRouteYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_passenger_route_repository import YamlPassengerRouteRepository
 
 
 def test_passenger_route_repo_loads_passenger_routes_correctly(tmp_path):

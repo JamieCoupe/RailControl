@@ -1,4 +1,4 @@
-from src.domain.domain_enums import TrackBlockType, TurnoutType, TurnoutState
+from railcontrol.domain.domain_enums import TrackBlockType, TurnoutType, TurnoutState
 
 
 class StubJunction:
@@ -24,7 +24,7 @@ class StubTrackBlock:
 
 class StubTurnout:
     def __init__(self, turnout_id, straight_id, diverging_id, state=TurnoutState.STRAIGHT):
-        from src.domain.domain_enums import TurnoutType
+        from railcontrol.domain.domain_enums import TurnoutType
         self.id = turnout_id
         self.name = turnout_id
         self.turnout_type = TurnoutType.STANDARD_LEFT  # arbitrary

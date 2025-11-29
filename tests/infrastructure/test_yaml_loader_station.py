@@ -1,4 +1,4 @@
-from src.infrastructure.data_sources.yaml.industry_loader import IndustryYamlLoader
+from railcontrol.infrastructure.data_sources.yaml.industry_loader import IndustryYamlLoader
 import pytest
 
 def test_yaml_is_loaded(tmp_path):

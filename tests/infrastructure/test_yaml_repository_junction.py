@@ -1,8 +1,8 @@
 import pytest
 
-from src.domain.domain_enums import JunctionType
-from src.infrastructure.data_sources.yaml.junction_loader import JunctionYamlLoader
-from src.infrastructure.repository.yaml.yaml_junction_repository import YamlJunctionRepository
+from railcontrol.domain.domain_enums import JunctionType
+from railcontrol.infrastructure.data_sources.yaml.junction_loader import JunctionYamlLoader
+from railcontrol.infrastructure.repository.yaml.yaml_junction_repository import YamlJunctionRepository
 
 
 def test_junction_repo_loads_junctions_correctly(tmp_path):

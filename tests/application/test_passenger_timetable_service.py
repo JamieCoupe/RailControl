@@ -1,8 +1,8 @@
 import pytest
 
-from src.application.timetable.passenger_timetable_service import PassengerTimetableService
-from src.domain.timetable.expanded_passenger_route import ExpandedPassengerRoute
-from src.domain.timetable.expanded_passenger_leg import ExpandedPassengerLeg
+from railcontrol.application.timetable.passenger_timetable_service import PassengerTimetableService
+from railcontrol.domain.timetable.expanded_passenger_route import ExpandedPassengerRoute
+from railcontrol.domain.timetable.expanded_passenger_leg import ExpandedPassengerLeg
 
 class DummyEdge:
     def __init__(self, weight):

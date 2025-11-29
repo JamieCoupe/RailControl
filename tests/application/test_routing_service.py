@@ -1,10 +1,10 @@
-from src.application.application_enums import RouteMode
-from src.application.dto.route_request import RouteRequest
-from src.application.routing.path_finder import Dijkstra
-from src.application.routing.routing_graph import RoutingGraph
-from src.application.routing.routing_node import RoutingNode
-from src.application.routing.routing_edge import RoutingEdge
-from src.application.routing.routing_service import RoutingService
+from railcontrol.application.application_enums import RouteMode
+from railcontrol.application.dto.route_request import RouteRequest
+from railcontrol.application.routing.path_finder import Dijkstra
+from railcontrol.application.routing.routing_graph import RoutingGraph
+from railcontrol.application.routing.routing_node import RoutingNode
+from railcontrol.application.routing.routing_edge import RoutingEdge
+from railcontrol.application.routing.routing_service import RoutingService
 
 
 def build_manual_test_graph():
@@ -62,10 +62,10 @@ def build_manual_graph_with_passing_loop():
     And includes reverse edges too (for realism).
     """
 
-    from src.application.routing.routing_graph import RoutingGraph
-    from src.application.routing.routing_node import RoutingNode
-    from src.application.routing.routing_edge import RoutingEdge
-    from src.domain.domain_enums import TrackBlockType
+    from railcontrol.application.routing.routing_graph import RoutingGraph
+    from railcontrol.application.routing.routing_node import RoutingNode
+    from railcontrol.application.routing.routing_edge import RoutingEdge
+    from railcontrol.domain.domain_enums import TrackBlockType
 
     graph = RoutingGraph()
 
