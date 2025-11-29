@@ -1,4 +1,4 @@
-from src.domain.domain_enums import TrackBlockType
+from src.domain.domain_enums import TrackBlockType, TrackBlockClass
 from src.domain.track.track_block import PlatformTrackBlock, TrackBlock, IndustryTrackBlock
 from src.infrastructure.data_sources.yaml.track_block_loader import TrackBlockYamlLoader
 from src.infrastructure.repository.track_block_repository import TrackBlockRepository
@@ -19,6 +19,7 @@ class YamlTrackBlockRepository(TrackBlockRepository):
                     raw_track_block['id'],
                     raw_track_block['name'],
                     TrackBlockType[raw_track_block['block_type'].upper()],
+                    TrackBlockClass[raw_track_block['block_class'].upper()],
                     raw_track_block['station_id'],
                     raw_track_block['dwell_time_minutes'],
                     raw_track_block['platform_number'],
@@ -31,6 +32,7 @@ class YamlTrackBlockRepository(TrackBlockRepository):
                     raw_track_block['id'],
                     raw_track_block['name'],
                     TrackBlockType[raw_track_block['block_type'].upper()],
+                    TrackBlockClass[raw_track_block['block_class'].upper()],
                     raw_track_block['industry_id'],
                     raw_track_block['load_time_minutes'],
                 )
@@ -41,6 +43,7 @@ class YamlTrackBlockRepository(TrackBlockRepository):
                     raw_track_block['id'],
                     raw_track_block['name'],
                     TrackBlockType[raw_track_block['block_type'].upper()],
+                    TrackBlockClass[raw_track_block['block_class'].upper()],
                 )
             self._track_blocks_by_id[raw_track_block['id']] = track_block
 

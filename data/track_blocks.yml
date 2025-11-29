@@ -1,24 +1,67 @@
 track_blocks:
-  - id: BLK_10
-    name: Renfrew P1 Block
-    block_type: PLATFORM
+  # -----------------------
+  # Renfrew Platforms
+  # -----------------------
+  - id: BLK_RNFR_P1
+    name: Renfrew Platform 1
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
     station_id: STN_RNFR
     dwell_time_minutes: 1
     platform_number: 1
 
-  - id: BLK_11
-    name: Renfrew P2 Block
-    block_type: PLATFORM
+  - id: BLK_RNFR_P2
+    name: Renfrew Platform 2
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
     station_id: STN_RNFR
     dwell_time_minutes: 1
     platform_number: 2
 
-  - id: BLK_UNLOAD_1
-    name: Fuel Unload Road 1
-    block_type: INDUSTRY
-    industry_id: IND_FUEL
-    load_time_minutes: 10
+  - id: BLK_RNFR_P3
+    name: Renfrew Platform 3
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
+    station_id: STN_RNFR
+    dwell_time_minutes: 1
+    platform_number: 3
 
-  - id: BLK_MAIN_1
-    name: Mainline Between Renfrew–Abbots Inch
+  - id: BLK_RNFR_P4
+    name: Renfrew Platform 4
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
+    station_id: STN_RNFR
+    dwell_time_minutes: 1
+    platform_number: 4
+
+  # -----------------------
+  # Abbots Inch Platforms
+  # -----------------------
+  - id: BLK_ABTI_P1
+    name: Abbots Inch Platform 1
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
+    station_id: STN_ABTI
+    dwell_time_minutes: 1
+    platform_number: 1
+
+  - id: BLK_ABTI_P2
+    name: Abbots Inch Platform 2
+    block_type: PLATFORM_TRACK
+    block_class: PLATFORM
+    station_id: STN_ABTI
+    dwell_time_minutes: 1
+    platform_number: 2
+
+  # -----------------------
+  # Mainline section between stations
+  # -----------------------
+  - id: BLK_MAIN_RNFR_ABTI
+    name: Mainline Renfrew – Abbots Inch
     block_type: MAINLINE
+    block_class: MAINLINE
+
+  - id: BLK_DIVERGE_TN_ABTI
+    name: Diverging Route at TN
+    block_type: MAINLINE
+    block_class: MAINLINE

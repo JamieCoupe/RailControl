@@ -12,11 +12,11 @@ class YamlJunctionRepository(JunctionRepository):
 
         for j in raw["junctions"]:
             junction = Junction(
-                j["id"],
+                j["junction_id"],
                 j["name"],
-                JunctionType[j["type"].upper()]
+                JunctionType[j["junction_type"].upper()]
             )
-            self._junctions[j["id"]] = junction
+            self._junctions[j["junction_id"]] = junction
 
     def get(self, junction_id: str) -> Junction:
         return self._junctions[junction_id]

@@ -39,13 +39,13 @@ class RepositoryProvider:
     def __init__(self, base_path: str):
         logger.info(f"Initialising RepositoryProvider using base path: {base_path}")
 
-        industry_loader = IndustryYamlLoader(os.path.join(base_path, "industries.yaml"))
-        commodity_loader = CommodityYamlLoader(os.path.join(base_path, "commodities.yaml"))
-        track_block_loader = TrackBlockYamlLoader(os.path.join(base_path, "track_blocks.yaml"))
-        track_section_loader = TrackSectionYamlLoader(os.path.join(base_path, "track_sections.yaml"))
-        turnout_loader = TurnoutYamlLoader(os.path.join(base_path, "turnouts.yaml"))
-        junction_loader = JunctionYamlLoader(os.path.join(base_path, "junctions.yaml"))
-        station_loader = StationYamlLoader(os.path.join(base_path, "stations.yaml"))
+        industry_loader = IndustryYamlLoader(os.path.join(base_path, "industries.yml"))
+        commodity_loader = CommodityYamlLoader(os.path.join(base_path, "commodities.yml"))
+        track_block_loader = TrackBlockYamlLoader(os.path.join(base_path, "track_blocks.yml"))
+        track_section_loader = TrackSectionYamlLoader(os.path.join(base_path, "track_sections.yml"))
+        turnout_loader = TurnoutYamlLoader(os.path.join(base_path, "turnouts.yml"))
+        junction_loader = JunctionYamlLoader(os.path.join(base_path, "junctions.yml"))
+        station_loader = StationYamlLoader(os.path.join(base_path, "stations.yml"))
         logger.debug("YAML loaders constructed")
 
         self.commodities = YamlCommodityRepository(commodity_loader)

@@ -1,0 +1,45 @@
+junctions:
+  # --- Renfrew outbound junction ---
+  - junction_id: J_RNFR_OUT_1
+    name: Renfrew Outbound 1
+    junction_type: standard
+
+  # --- Middle junction on the mainline ---
+  - junction_id: J_TN
+    name: Mainline Turnout Node
+    junction_type: turnout
+
+  # --- Abbots Inch inbound junctions ---
+  - junction_id: J_ABTI_IN_1
+    name: Abbots Inch Inbound 1
+    junction_type: standard
+
+  - junction_id: J_ABTI_IN_2
+    name: Abbots Inch Inbound 2
+    junction_type: standard
+
+  # --- Renfrew Platform Buffers ---
+  - junction_id: J_RNFR_P1
+    name: Renfrew Platform 1 Buffer
+    junction_type: buffer
+
+  - junction_id: J_RNFR_P2
+    name: Renfrew Platform 2 Buffer
+    junction_type: buffer
+
+  - junction_id: J_RNFR_P3
+    name: Renfrew Platform 3 Buffer
+    junction_type: buffer
+
+  - junction_id: J_RNFR_P4
+    name: Renfrew Platform 4 Buffer
+    junction_type: buffer
+
+  # --- Abbots Inch Platform Buffers ---
+  - junction_id: J_ABTI_P1
+    name: Abbots Inch Platform 1 Buffer
+    junction_type: buffer
+
+  - junction_id: J_ABTI_P2
+    name: Abbots Inch Platform 2 Buffer
+    junction_type: buffer

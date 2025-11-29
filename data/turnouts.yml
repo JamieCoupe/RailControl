@@ -1,14 +1,7 @@
 turnouts:
-  - id: T01
-    name: Renfrew East
-    turnout_type: STANDARD_LEFT
-    straight_section_id: SEC_05
-    diverging_section_id: SEC_06
-    current_state: STRAIGHT
-
-  - id: T02
-    name: Abbots Inch West
-    turnout_type: STANDARD_RIGHT
-    straight_section_id: SEC_10
-    diverging_section_id: SEC_11
-    current_state: DIVERGING
+  - id: TN_RNFR_ABTI
+    name: Turnout between Renfrew mainline and Abbots Inch P2
+    turnout_type:  STANDARD_LEFT      # or whatever value your TurnoutType enum expects
+    straight_section_id: TS_MAIN_TN_ABTI
+    diverging_section_id: TS_ABTI_P2_IN
+    current_state: STRAIGHT    # or whatever your TurnoutState enum uses

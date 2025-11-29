@@ -36,7 +36,7 @@ class PassengerRouteExpander:
 
         # Get all platform blocks for this station
         station = self.station_repo.get(passenger_stop.station_id)
-        platform_blocks = self.track_block_repo.get_platform_blocks_for_station(station.id)
+        platform_blocks = self.track_block_repo.get_by_station(station.id)
 
         if not platform_blocks:
             raise ValueError(f"No platform blocks found for station '{station.id}'.")
@@ -110,8 +110,9 @@ class PassengerRouteExpander:
                 f"{route.message}"
             )
 
+
         inbound_edges = []
-        path_nodes = route.path_nodes
+        path_nodes = route.node_ids
         edges_by_node = self.routing_service.graph.edges
 
         for i in range(len(path_nodes) - 1):
@@ -157,15 +158,36 @@ class PassengerRouteExpander:
 
         # 3. Iterate across stop pairs
         stops = passenger_route.stops
+
+        first_stop = stops[0]
+        first_stop_platform = self._resolve_platform_block_for_stop(stops[0])
+        fA_entry, fA_exit = self._resolve_platform_junctions(first_stop_platform)
+
+        if first_stop.dwell_time is not None and first_stop.dwell_time < 0:
+            raise ValueError(f"Dwell time cannot be negative at station {first_stop.station_id}")
+
+        if first_stop.dwell_time is not None:
+            dwell_seconds = first_stop.dwell_time
+        else:
+            dwell_seconds = first_stop_platform.dwell_time_minutes * 60
+
+        legs.append(
+            ExpandedPassengerLeg(
+                station_id=first_stop.station_id,
+                platform_block_id=first_stop_platform.id,
+                arrival_junction_id=fA_entry,
+                departure_junction_id=fA_exit,
+                inbound_path_edges=[],
+                dwell_time=dwell_seconds,
+                is_request_stop=first_stop.is_request_stop,
+            )
+        )
         for i in range(len(stops) - 1):
             # We'll implement this after routing logic is ready
             leg = self._build_route_leg(stops[i], stops[i + 1])
             legs.append(leg)
 
         # 4. Return a structure (create this next lesson)
-        return ExpandedPassengerRoute(
-            route=passenger_route,
-            legs=legs,
-        )
+        return ExpandedPassengerRoute(legs=legs)
 
     

@@ -5,7 +5,7 @@ passenger_routes:
     stops:
       - station_id: STN_RNFR
         dwell_time: 60
-        platform: 1
+        platform_preference: 1
 
       - station_id: STN_ABTI
         dwell_time: 45

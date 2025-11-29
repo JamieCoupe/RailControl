@@ -1,7 +1,73 @@
 track_sections:
-  - id: SEC_01
-    block_id: BLK_MAIN_1
-    start_junction_id: J_RNFR_EAST
-    end_junction_id: J_ABTI_WEST
-    length_mm: 1000
-    max_speed: 80
+  # -----------------------
+  # Renfrew Platforms → Junction
+  # -----------------------
+  - id: TS_RNFR_P1_OUT
+    block_id: BLK_RNFR_P1
+    start_junction_id: J_RNFR_P1
+    end_junction_id: J_RNFR_OUT_1
+    length_mm: 200
+    max_speed: 25
+
+  - id: TS_RNFR_P2_OUT
+    block_id: BLK_RNFR_P2
+    start_junction_id: J_RNFR_P2
+    end_junction_id: J_RNFR_OUT_1
+    length_mm: 200
+    max_speed: 25
+
+  - id: TS_RNFR_P3_OUT
+    block_id: BLK_RNFR_P3
+    start_junction_id: J_RNFR_P3
+    end_junction_id: J_RNFR_OUT_1
+    length_mm: 200
+    max_speed: 25
+
+  - id: TS_RNFR_P4_OUT
+    block_id: BLK_RNFR_P4
+    start_junction_id: J_RNFR_P4
+    end_junction_id: J_RNFR_OUT_1
+    length_mm: 200
+    max_speed: 25
+
+  # -----------------------
+  # Abbots Inch Platforms → Junctions
+  # -----------------------
+  - id: TS_ABTI_P1_IN
+    block_id: BLK_ABTI_P1
+    start_junction_id: J_ABTI_IN_1
+    end_junction_id: J_ABTI_P1
+    length_mm: 200
+    max_speed: 25
+
+  - id: TS_ABTI_P2_IN
+    block_id: BLK_ABTI_P2
+    start_junction_id: J_ABTI_IN_2
+    end_junction_id: J_ABTI_P2
+    length_mm: 200
+    max_speed: 25
+
+  # -----------------------
+  # Mainline Sections
+  # -----------------------
+  - id: TS_MAIN_RNFR_TN
+    block_id: BLK_MAIN_RNFR_ABTI
+    start_junction_id: J_RNFR_OUT_1
+    end_junction_id: J_TN
+    length_mm: 1200
+    max_speed: 90
+
+  - id: TS_MAIN_TN_ABTI
+    block_id: BLK_MAIN_RNFR_ABTI
+    start_junction_id: J_TN
+    end_junction_id: J_ABTI_IN_1
+    length_mm: 1200
+    max_speed: 90
+
+  # Diverging route
+  - id: TS_TURNOUT_AUX
+    block_id: BLK_MAIN_RNFR_ABTI
+    start_junction_id: J_TN
+    end_junction_id: J_ABTI_IN_2
+    length_mm: 200
+    max_speed: 40
