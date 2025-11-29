@@ -8,10 +8,8 @@ from src.application.routing.routing_graph import RoutingGraph
 from src.application.routing.path_finder import Dijkstra
 from src.application.routing.routing_node import RoutingNode
 from src.application.utils.scale_conversion import travel_time_seconds
-from src.domain.domain_enums import TrackBlockType
 
 logger = logging.getLogger(__name__)
-
 
 class RoutingService:
     def __init__(self, graph: RoutingGraph):
@@ -37,7 +35,6 @@ class RoutingService:
         return str(value).upper().replace(" ", "_")
 
     # ---------- basic route ----------
-
     def find_route(self, start_junction_id: str, end_junction_id: str) -> RouteResult:
         if not (start_junction_id in self.graph.nodes and end_junction_id in self.graph.nodes):
             raise ValueError("NodeError: start or end junction not in graph")
@@ -46,7 +43,6 @@ class RoutingService:
         return finder.find_path(start_junction_id, end_junction_id)
 
     # ---------- graph cloning ----------
-
     def clone_graph(self) -> RoutingGraph:
         # Create Empty Graph
         cloned_graph = RoutingGraph()
@@ -76,7 +72,6 @@ class RoutingService:
         return cloned_graph
 
     # ---------- advanced route with request ----------
-
     def find_route_by_request(self, route_request: RouteRequest) -> RouteResult:
         logger.info(
             "Routing request %s -> %s, mode=%s",

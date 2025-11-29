@@ -40,3 +40,8 @@ class WagonType(Enum):
     OPEN = "open"
     HOPPER = "hopper"
     FLAT = "flat"
+
+class Direction(Enum):
+    UP = "up"
+    DOWN = "down"
+    CIRCULAR = "circular"
