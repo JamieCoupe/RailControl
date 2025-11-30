@@ -1,14 +1,16 @@
 import logging
 
+from railcontrol.config import DATA_PATH
 from railcontrol.application.routing.routing_service import RoutingService
 from railcontrol.application.topology.topology_builder import TopologyBuilder
 from railcontrol.infrastructure.providers.repository_provider import RepositoryProvider
 
 logger = logging.getLogger(__name__)
 
+
 class AppDataContext:
 
-    def __init__(self, data_path: str):
+    def __init__(self, data_path: str = DATA_PATH):
         """
         The application-wide context.
         Builds repositories, services, engines, and exposes them.

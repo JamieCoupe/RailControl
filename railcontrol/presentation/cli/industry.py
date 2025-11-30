@@ -38,7 +38,7 @@ def list_industry_detail(industry_id: str):
     table_industry = Table(title="Industry")
     table_industry.add_column("Name", style="cyan", no_wrap=True)
     table_industry.add_column("ID", style="magenta")
-    table_industry.add_column("Type", style="green")
+    table_industry.add_column("Type", style="blue")
     table_industry.add_column("Number of lines", style="green")
 
     lines = context.repos.track_blocks.get_by_industry(industry.id)

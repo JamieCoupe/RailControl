@@ -1,6 +1,7 @@
 import pytest
 
 from railcontrol.application.timetable.passenger_timetable_service import PassengerTimetableService
+from railcontrol.domain.domain_enums import Direction
 from railcontrol.domain.timetable.expanded_passenger_route import ExpandedPassengerRoute
 from railcontrol.domain.timetable.expanded_passenger_leg import ExpandedPassengerLeg
 
@@ -20,11 +21,13 @@ def test_single_station_timetable():
             departure_junction_id="J2",
             inbound_path_edges=[],   # first station
             dwell_time=30,
-            is_request_stop=False
+            is_request_stop=False,
+            platform_length_mm=400,
+            platform_max_speed=25,
         )
     ]
 
-    route = ExpandedPassengerRoute(legs)
+    route = ExpandedPassengerRoute(legs, direction=Direction.UP)
     timetable = service.generate_timetable(route, start_time_seconds=1000)
 
     assert len(timetable) == 1
@@ -43,7 +46,9 @@ def test_two_station_timetable():
         departure_junction_id="JA2",
         inbound_path_edges=[],
         dwell_time=30,
-        is_request_stop=False
+        is_request_stop=False,
+        platform_length_mm=400,
+        platform_max_speed=25,
     )
 
     legB = ExpandedPassengerLeg(
@@ -53,10 +58,12 @@ def test_two_station_timetable():
         departure_junction_id="JB2",
         inbound_path_edges=[DummyEdge(20), DummyEdge(10)],   # 30 sec travel
         dwell_time=45,
-        is_request_stop=False
+        is_request_stop=False,
+        platform_length_mm=400,
+        platform_max_speed=25,
     )
 
-    route = ExpandedPassengerRoute([legA, legB])
+    route = ExpandedPassengerRoute([legA, legB], Direction.UP)
     timetable = service.generate_timetable(route, start_time_seconds=0)
 
     # A

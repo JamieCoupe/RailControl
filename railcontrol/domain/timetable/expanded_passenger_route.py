@@ -1,9 +1,11 @@
+from railcontrol.domain.domain_enums import Direction
 from railcontrol.domain.timetable.expanded_passenger_leg import ExpandedPassengerLeg
 
 
 class ExpandedPassengerRoute:
-    def __init__(self, legs: list[ExpandedPassengerLeg]):
+    def __init__(self, legs: list[ExpandedPassengerLeg], direction: Direction):
         self.legs = legs
+        self.direction = direction
 
     def total_distance_mm(self):
         return sum(
@@ -12,14 +14,7 @@ class ExpandedPassengerRoute:
             for edge in leg.inbound_path_edges
         )
 
-    def expand_times(self, expanded_route, start_time_seconds):
-        """
-        Given an ExpandedPassengerRoute with legs resolved,
-        compute the arrival/departure times at each stop.
-
-        Implementation:
-          - NOT YET. This is Lesson 9.7.
-        """
+    def total_time(self, start_time_seconds):
         raise NotImplementedError
 
     def stations(self):

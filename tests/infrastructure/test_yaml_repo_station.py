@@ -16,6 +16,7 @@ def test_station_repo_loads_stations_correctly(tmp_path):
             station_id: STN_RNFR
             dwell_time_minutes: 1
             platform_number: 1
+            length_mm: 600
         """
 
     yaml_file = tmp_path / "track_blocks.yaml"
@@ -56,6 +57,7 @@ def test_station_repo_loads_stations_correctly_with_no_platforms(tmp_path):
             station_id: STN_RNFR
             dwell_time_minutes: 1
             platform_number: 1
+            length_mm: 600
         """
 
     yaml_file = tmp_path / "track_blocks.yaml"
@@ -95,6 +97,7 @@ def test_repo_raises_for_missing_stations(tmp_path):
                 station_id: STN_RNFR
                 dwell_time_minutes: 1
                 platform_number: 1
+                length_mm: 600
             """
 
     yaml_file = tmp_path / "track_blocks.yaml"

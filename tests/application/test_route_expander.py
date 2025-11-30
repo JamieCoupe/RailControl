@@ -89,11 +89,11 @@ def test_resolve_platform_block_with_preference():
     p1 = PlatformTrackBlock(id="P1", station_id="ABC", name="test-1",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=1)
+                            dwell_time_minutes=10, platform_number=1, length_mm=600)
     p2 = PlatformTrackBlock(id="P2", station_id="ABC", name="test-2",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=2)
+                            dwell_time_minutes=10, platform_number=2, length_mm=600)
 
     expander = make_expander([p1, p2])
 
@@ -107,7 +107,7 @@ def test_resolve_platform_block_invalid_preference_raises():
     p1 = PlatformTrackBlock(id="P1", station_id="ABC", name="test-1",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=1)
+                            dwell_time_minutes=10, platform_number=1, length_mm=600)
 
     expander = make_expander([p1])
 
@@ -121,7 +121,7 @@ def test_resolve_platform_block_single_platform():
     p1 = PlatformTrackBlock(id="P1", station_id="ABC", name="test-1",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=1)
+                            dwell_time_minutes=10, platform_number=1, length_mm=600)
 
     expander = make_expander([p1])
 
@@ -135,11 +135,11 @@ def test_resolve_platform_block_multiple_platform_default_first():
     p1 = PlatformTrackBlock(id="P1", station_id="ABC", name="test-1",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=1)
+                            dwell_time_minutes=10, platform_number=1, length_mm=600)
     p2 = PlatformTrackBlock(id="P2", station_id="ABC", name="test-2",
                             track_block_type=TrackBlockType.PLATFORM_TRACK,
                             track_block_class=TrackBlockClass.PLATFORM,
-                            dwell_time_minutes=10, platform_number=2)
+                            dwell_time_minutes=10, platform_number=2, length_mm=600)
 
     expander = make_expander([p1, p2])
 
@@ -162,7 +162,7 @@ def test_stop_level_dwell_overrides_platform():
     platform = PlatformTrackBlock(
         id="P1", name="Platform1", track_block_type=TrackBlockType.PLATFORM_TRACK,
         track_block_class=TrackBlockClass.PLATFORM,
-        dwell_time_minutes=3, platform_number=1, station_id="STA"
+        dwell_time_minutes=3, platform_number=1, station_id="STA", length_mm=600
     )
 
     expander = make_expander([platform])
@@ -179,7 +179,7 @@ def test_fallback_to_platform_dwell():
     platform = PlatformTrackBlock(
         id="P2", name="Platform2", track_block_type=TrackBlockType.PLATFORM_TRACK,
         track_block_class=TrackBlockClass.PLATFORM,
-        dwell_time_minutes=2, platform_number=1, station_id="STB"
+        dwell_time_minutes=2, platform_number=1, station_id="STB", length_mm=600
     )
 
     expander = make_expander([platform])
@@ -196,7 +196,7 @@ def test_negative_dwell_raises_error():
     platform = PlatformTrackBlock(
         id="P3", name="Platform3", track_block_type=TrackBlockType.PLATFORM_TRACK,
         track_block_class=TrackBlockClass.PLATFORM,
-        dwell_time_minutes=1, platform_number=1, station_id="STC"
+        dwell_time_minutes=1, platform_number=1, station_id="STC", length_mm=600
     )
 
     expander = make_expander([platform])
@@ -223,7 +223,8 @@ def test_expand_route_includes_first_station():
         track_block_class=TrackBlockClass.PLATFORM,
         station_id="STA",
         dwell_time_minutes=2,
-        platform_number=1
+        platform_number=1,
+        length_mm=600
     )
 
     # its track section defines entry/exit junctions

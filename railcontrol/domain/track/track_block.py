@@ -23,12 +23,14 @@ class PlatformTrackBlock(TrackBlock):
             track_block_class: TrackBlockClass,
             station_id: str,
             dwell_time_minutes: int,
-            platform_number: int
+            platform_number: int,
+            length_mm: int
         ):
         super().__init__(id, name, track_block_type, track_block_class)
         self.station_id = station_id
         self.dwell_time_minutes = dwell_time_minutes
         self.platform_number = platform_number
+        self.length_mm = length_mm
 
 class IndustryTrackBlock(TrackBlock):
     def __init__(

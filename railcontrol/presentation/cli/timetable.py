@@ -8,6 +8,6 @@ console = Console()
 
 
 @timetable_app.command("generate")
-def generate_timetable(file: str, start: str = "08:00"):
-    typer.echo(f"Would generate timetable from {file}, starting at {start}")
+def generate_timetable(route_id: str, start: str = "08:00"):
+    typer.echo(f"Will generate timetable for route {route_id}, starting at {start}")
 

@@ -38,6 +38,7 @@ def test_track_block_repo_loads_platform_block(tmp_path):
         station_id: STN_RNFR
         dwell_time_minutes: 1
         platform_number: 1
+        length_mm: 600
     """
 
     yaml_file = tmp_path / "track_blocks.yaml"
@@ -55,6 +56,7 @@ def test_track_block_repo_loads_platform_block(tmp_path):
     assert block.track_block_class == TrackBlockClass.PLATFORM
     assert block.dwell_time_minutes == 1
     assert block.platform_number == 1
+    assert block.length_mm == 600
     assert len(repo.get_all()) == 1
     assert len(repo.get_all_platform_blocks()) == 1
     assert type(repo.get_all_platform_blocks()[0]) is PlatformTrackBlock

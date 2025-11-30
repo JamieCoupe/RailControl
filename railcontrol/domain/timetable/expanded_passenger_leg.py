@@ -9,15 +9,19 @@ class ExpandedPassengerLeg:
         departure_junction_id: str | None,
         inbound_path_edges: list[RoutingEdge],
         dwell_time: int,
-        is_request_stop: bool
+        is_request_stop: bool,
+        platform_length_mm: int,
+        platform_max_speed: int,
     ):
         self.station_id = station_id
         self.platform_block_id = platform_block_id
         self.arrival_junction_id = arrival_junction_id
         self.departure_junction_id = departure_junction_id
-        self.inbound_path_edges = inbound_path_edges  # path from previous station
-        self.dwell_time = dwell_time
+        self.inbound_path_edges = inbound_path_edges
+        self.dwell_time = max(0, dwell_time)
         self.is_request_stop = is_request_stop
+        self.platform_length_mm = platform_length_mm
+        self.platform_max_speed = platform_max_speed
 
     def __repr__(self):
         return f"<Leg {self.station_id} platform={self.platform_block_id}>"

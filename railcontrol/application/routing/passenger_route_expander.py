@@ -133,6 +133,8 @@ class PassengerRouteExpander:
         else:
             dwell_seconds = platform_b.dwell_time_minutes * 60
 
+        platform_section = self.track_section_repo.get_by_block_id(platform_b.id)[0]
+
         leg = ExpandedPassengerLeg(
             station_id=stop_b.station_id,
             platform_block_id=platform_b.id,
@@ -141,6 +143,8 @@ class PassengerRouteExpander:
             inbound_path_edges=inbound_edges,
             dwell_time=dwell_seconds,
             is_request_stop=stop_b.is_request_stop,
+            platform_length_mm=platform_b.length_mm,
+            platform_max_speed=platform_section.max_speed,
         )
 
         return leg
@@ -162,6 +166,7 @@ class PassengerRouteExpander:
         first_stop = stops[0]
         first_stop_platform = self._resolve_platform_block_for_stop(stops[0])
         fA_entry, fA_exit = self._resolve_platform_junctions(first_stop_platform)
+        first_section = self.track_section_repo.get_by_block_id(first_stop_platform.id)[0]
 
         if first_stop.dwell_time is not None and first_stop.dwell_time < 0:
             raise ValueError(f"Dwell time cannot be negative at station {first_stop.station_id}")
@@ -180,6 +185,8 @@ class PassengerRouteExpander:
                 inbound_path_edges=[],
                 dwell_time=dwell_seconds,
                 is_request_stop=first_stop.is_request_stop,
+                platform_length_mm=first_section.length_mm,
+                platform_max_speed=first_section.max_speed,
             )
         )
         for i in range(len(stops) - 1):
@@ -188,6 +195,6 @@ class PassengerRouteExpander:
             legs.append(leg)
 
         # 4. Return a structure (create this next lesson)
-        return ExpandedPassengerRoute(legs=legs)
+        return ExpandedPassengerRoute(legs=legs, direction= passenger_route.direction)
 
     

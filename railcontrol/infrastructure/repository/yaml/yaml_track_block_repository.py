@@ -23,6 +23,7 @@ class YamlTrackBlockRepository(TrackBlockRepository):
                     raw_track_block['station_id'],
                     raw_track_block['dwell_time_minutes'],
                     raw_track_block['platform_number'],
+                    raw_track_block['length_mm']
                 )
                 self._platform_blocks_by_id[raw_track_block['id']] = platform_block
                 track_block = platform_block
@@ -34,7 +35,7 @@ class YamlTrackBlockRepository(TrackBlockRepository):
                     TrackBlockType[raw_track_block['block_type'].upper()],
                     TrackBlockClass[raw_track_block['block_class'].upper()],
                     raw_track_block['industry_id'],
-                    raw_track_block['load_time_minutes'],
+                    raw_track_block['load_time_minutes']
                 )
                 self._industry_blocks_by_id[raw_track_block['id']] = industry_block
                 track_block = industry_block
