@@ -4,6 +4,7 @@ from railcontrol.config import DATA_PATH
 from railcontrol.application.routing.routing_service import RoutingService
 from railcontrol.application.topology.topology_builder import TopologyBuilder
 from railcontrol.infrastructure.providers.repository_provider import RepositoryProvider
+from railcontrol.application.timetable.service_id_generator import ServiceIDGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -17,36 +18,32 @@ class AppDataContext:
         """
         logger.info(f"Starting App Context from: {data_path}")
 
-        #Build repository provider
+        # -----------------------------
+        # 1) Repository provider
+        # -----------------------------
         self.repos = RepositoryProvider(data_path)
 
-        #Build the topology builder
+        # -----------------------------
+        # 2) Build topology builder
+        # -----------------------------
         self.topology_builder = TopologyBuilder(
-            junction_repository=self.repos.junctions,          # not created yet
+            junction_repository=self.repos.junctions,
             track_section_repository=self.repos.track_sections,
             track_block_repository=self.repos.track_blocks,
             turnout_repository=self.repos.turnouts,
         )
 
-        #Build the routing service
+        # -----------------------------
+        # 3) Build routing service
+        # -----------------------------
         routing_graph = self.topology_builder.build_graph()
-
         self.routing = RoutingService(routing_graph)
 
         # -----------------------------
-        # 4) Passenger timetable engine (later)
+        # 4) Headcode / Service ID Generator  ✓ NEW
         # -----------------------------
-        # self.passenger_timetable = PassengerTimetableService(
-        #    station_repo=self.repos.stations,
-        #    track_section_repo=self.repos.track_sections,
-        #    ...
-        # )
+        self.service_id_generator = ServiceIDGenerator()
 
-        # -----------------------------
-        # 5) Freight engines (later)
-        # -----------------------------
-
-        # IndustryDemandEngine
-        # FreightTrainBuilder
-        # WaybillGenerator
-
+        # Future:
+        # self.passenger_timetable = PassengerTimetableService(...)
+        # self.freight_engine = IndustryDemandEngine(...)

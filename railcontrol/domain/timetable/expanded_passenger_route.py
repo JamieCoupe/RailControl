@@ -7,15 +7,5 @@ class ExpandedPassengerRoute:
         self.legs = legs
         self.direction = direction
 
-    def total_distance_mm(self):
-        return sum(
-            edge.length_mm
-            for leg in self.legs
-            for edge in leg.inbound_path_edges
-        )
-
-    def total_time(self, start_time_seconds):
-        raise NotImplementedError
-
     def stations(self):
         return [leg.station_id for leg in self.legs]

@@ -3,8 +3,7 @@ import os
 from rich.console import Console
 from rich.table import Table
 
-from railcontrol.application.app_context import AppDataContext
-from railcontrol.config import DATA_PATH
+from railcontrol.presentation.cli.context import context
 
 track_section_app = typer.Typer(help="Track section commands")
 console = Console()
@@ -13,7 +12,6 @@ console = Console()
 
 @track_section_app.command("list")
 def list_sections():
-    context = AppDataContext(DATA_PATH)
 
     # Create rich table
     table = Table(title="Track Sections")

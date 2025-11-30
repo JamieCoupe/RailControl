@@ -5,16 +5,12 @@ from rich.console import Console
 from rich.table import Table
 
 from railcontrol.domain.domain_enums import TrackBlockClass
-from railcontrol.application.app_context import AppDataContext
-from railcontrol.config import DATA_PATH
-
+from railcontrol.presentation.cli.context import context
 track_block_app = typer.Typer(help="Track block commands")
 console = Console()
 
 @track_block_app.command("list")
 def list_blocks():
-    context = AppDataContext(DATA_PATH)
-
     # Create rich table
     table_all = Table(title="Track Blocks - Standard")
     table_all.add_column("Name", style="cyan", no_wrap=True)

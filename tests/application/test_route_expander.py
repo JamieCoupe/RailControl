@@ -9,19 +9,20 @@ from railcontrol.application.routing.passenger_route_expander import PassengerRo
 from railcontrol.domain.track.track_section import TrackSection
 
 
+# ---------------------------------------------------------
+# Dummy Repos
+# ---------------------------------------------------------
+
 class DummyBlockRepo:
-    """
-    Matches real TrackBlockRepository interface sufficiently for tests.
-    """
     def __init__(self, platform_blocks):
         self._platform_blocks = platform_blocks
 
     def get_platform_blocks_for_station(self, station_id):
         return self._platform_blocks
 
-    # NEW (the expander now expects this)
     def get_by_station(self, station_id):
         return self._platform_blocks
+
 
 class DummyTrackSectionRepo:
     def __init__(self, sections):
@@ -30,18 +31,10 @@ class DummyTrackSectionRepo:
     def get_by_block_id(self, block_id):
         return self._sections
 
-class DummyRoutingGraph:
-    def __init__(self):
-        self.edges = {}
 
 class DummyRoutingService:
     def __init__(self):
-        # minimal graph object
-        self.graph = type(
-            "G",
-            (),
-            {"edges": {"j1": [], "j2": [], "J_ENTRY": [], "J_EXIT": []}}
-        )()
+        self.graph = type("G", (), {"edges": {"j1": [], "j2": [], "J_ENTRY": [], "J_EXIT": []}})()
 
     def find_route(self, a, b):
         class R:
@@ -52,14 +45,18 @@ class DummyRoutingService:
             message = ""
         return R()
 
+
 class DummyStationRepo:
     def __init__(self, stations):
         self.stations = stations
 
     def get(self, station_id):
-        # Always return a Station object for the requested id
         return Station(id=station_id, name=f"Station {station_id}", track_blocks=[])
 
+
+# ---------------------------------------------------------
+# Helper factory
+# ---------------------------------------------------------
 
 def make_expander(platform_blocks):
     station = Station(id="ABC", name="Test Station", track_blocks=[])
@@ -84,6 +81,10 @@ def make_expander(platform_blocks):
         routing,
     )
 
+
+# ---------------------------------------------------------
+# Tests
+# ---------------------------------------------------------
 
 def test_resolve_platform_block_with_preference():
     p1 = PlatformTrackBlock(id="P1", station_id="ABC", name="test-1",
@@ -208,14 +209,12 @@ def test_negative_dwell_raises_error():
         expander._build_route_leg(stop_a, stop_b)
 
 
-
 def test_expand_route_includes_first_station():
     """
-    Ensure the expander includes a first leg for the origin station
-    BEFORE any routing occurs.
+    After Lesson 11/12, the first leg must include a platform edge,
+    not an empty inbound_path_edges list.
     """
 
-    # --- Setup platform + junctions ---
     pblock = PlatformTrackBlock(
         id="P1",
         name="Platform 1",
@@ -227,7 +226,6 @@ def test_expand_route_includes_first_station():
         length_mm=600
     )
 
-    # its track section defines entry/exit junctions
     section = TrackSection(
         id="TS1",
         block_id="P1",
@@ -237,36 +235,33 @@ def test_expand_route_includes_first_station():
         max_speed=60
     )
 
-    # --- repos ---
-    station_repo = DummyStationRepo({"STA": object()})   # station object not used here
+    station_repo = DummyStationRepo({"STA": object()})
     block_repo = DummyBlockRepo([pblock])
     section_repo = DummyTrackSectionRepo([section])
     routing = DummyRoutingService()
 
-    expander = PassengerRouteExpander(
-        station_repo,
-        block_repo,
-        section_repo,
-        routing
-    )
+    expander = PassengerRouteExpander(station_repo, block_repo, section_repo, routing)
 
-    # --- Stops: only one relevant here ---
     stopA = PassengerStop(station_id="STA", dwell_time=30)
-    stopB = PassengerStop(station_id="STA", dwell_time=10)  # second stop unused for first-leg validation
+    stopB = PassengerStop(station_id="STA", dwell_time=10)
 
     route = PassengerRoute(id="tTR1", name="Test Route", stops=[stopA, stopB])
 
     expanded = expander.expand_route(route)
 
-    # --------------------
-    #   ASSERTIONS
-    # --------------------
     first_leg = expanded.legs[0]
 
     assert first_leg.station_id == "STA"
-    assert first_leg.inbound_path_edges == []          # critical
     assert first_leg.platform_block_id == "P1"
     assert first_leg.arrival_junction_id == "J_ENTRY"
     assert first_leg.departure_junction_id == "J_EXIT"
-    assert first_leg.dwell_time == 30                  # dwell override
+    assert first_leg.dwell_time == 30
     assert first_leg.is_request_stop is False
+
+    # NEW: inbound_path_edges now contains a synthetic platform edge
+    assert len(first_leg.inbound_path_edges) == 1
+    edge = first_leg.inbound_path_edges[0]
+
+    assert edge.track_block_id == "TS1"
+    assert edge.length_mm == 100
+    assert edge.max_speed == 60

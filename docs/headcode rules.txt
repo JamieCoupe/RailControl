@@ -1,0 +1,71 @@
+Rule 1 — Class digit
+
+The FIRST digit encodes train type:
+
+Class	Meaning
+1	Express passenger (includes intercity, EMU fast)
+2	Stopping / local passenger
+3	Parcels / Royal Mail
+4	Fast freight (> 75mph)
+5	ECS (Empty Coaching Stock)
+6	Freight (≤ 60mph)
+7	Freight (≤ 45mph)
+8	Heavy freight (≤ 35mph)
+9	Special high-speed / HST / new IETs
+
+Your passenger timetable already knows whether a service is "express" or "stopping" → so class chooses itself.
+
+Rule 2 — Route / Region Letter
+
+Second character is a capital letter representing the route geography:
+
+Code	Meaning
+A	Anglia / Eastern
+C	Central / LNW Midlands
+E	Tyneside / Northeast
+F	Southern Region coastal branches
+H	Highland (Scotland)
+M	Manchester / NW
+N	North / ECML
+S	Scotland
+T	Trans-Pennine
+V	Western Region mainlines
+W	Wales
+Z	Special workings
+
+For Scotland we typically use:
+
+S for Scottish region
+
+H for Highland (Fort William, Inverness)
+
+Rule 3 — Train Number (two digits)
+
+Range 00–99
+
+For a full system we will generate:
+
+sequential numbers
+
+uniqueness per day
+
+reuse per hour or per route
+
+But for now we allow:
+
+service_number = 01 → 99
+
+Rule 4 — Destination Letter (rarely used today)
+
+Old BR practice used the last letter to encode the final destination or major junction.
+
+Modern headcodes do NOT include the destination letter (the 4th character is numeric).
+
+So your format is always:
+
+1S12   # OK
+4M40   # OK
+2H71   # OK
+
+
+We are not doing 1960s “A to Z termination” style.

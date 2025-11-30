@@ -3,15 +3,13 @@ import os
 from rich.console import Console
 from rich.table import Table
 
-from railcontrol.application.app_context import AppDataContext
-from railcontrol.config import DATA_PATH
+from railcontrol.presentation.cli.context import context
 
 stations_app = typer.Typer(help="Station-related commands")
 console = Console()
 
 @stations_app.command("list")
 def list_stations():
-    context = AppDataContext(DATA_PATH)
 
     # Create rich table
     table = Table(title="Stations")

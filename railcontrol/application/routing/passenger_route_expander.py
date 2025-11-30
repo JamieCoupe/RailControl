@@ -1,3 +1,4 @@
+from railcontrol.application.routing.routing_edge import RoutingEdge
 from railcontrol.domain.timetable.expanded_passenger_leg import ExpandedPassengerLeg
 from railcontrol.domain.timetable.expanded_passenger_route import ExpandedPassengerRoute
 from railcontrol.domain.timetable.passenger_route import PassengerRoute
@@ -168,6 +169,18 @@ class PassengerRouteExpander:
         fA_entry, fA_exit = self._resolve_platform_junctions(first_stop_platform)
         first_section = self.track_section_repo.get_by_block_id(first_stop_platform.id)[0]
 
+        platform_edge = RoutingEdge(
+            from_node=first_section.start_junction_id,
+            to_node=first_section.end_junction_id,
+            track_section_id=first_section.id,
+            track_block_id=first_section.id,
+            length_mm=first_section.length_mm,
+            max_speed=first_section.max_speed,
+            weight=1,
+            block_class="PLATFORM",
+            block_type="PLATFORM",
+        )
+
         if first_stop.dwell_time is not None and first_stop.dwell_time < 0:
             raise ValueError(f"Dwell time cannot be negative at station {first_stop.station_id}")
 
@@ -182,7 +195,7 @@ class PassengerRouteExpander:
                 platform_block_id=first_stop_platform.id,
                 arrival_junction_id=fA_entry,
                 departure_junction_id=fA_exit,
-                inbound_path_edges=[],
+                inbound_path_edges=[platform_edge],
                 dwell_time=dwell_seconds,
                 is_request_stop=first_stop.is_request_stop,
                 platform_length_mm=first_section.length_mm,

@@ -22,6 +22,9 @@ class ExpandedPassengerLeg:
         self.is_request_stop = is_request_stop
         self.platform_length_mm = platform_length_mm
         self.platform_max_speed = platform_max_speed
+        self.total_length_mm: int | None = None
+        self.running_time_s: int | None = None
+        self.effective_speed_mph: int | None = None
 
     def __repr__(self):
         return f"<Leg {self.station_id} platform={self.platform_block_id}>"

@@ -3,9 +3,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from railcontrol.domain.domain_enums import TrackBlockClass, TurnoutState
-from railcontrol.application.app_context import AppDataContext
-from railcontrol.config import DATA_PATH
+from railcontrol.presentation.cli.context import context
 
 turnout_app = typer.Typer(help="Turnout commands")
 console = Console()
@@ -13,7 +11,7 @@ console = Console()
 
 @turnout_app.command("list")
 def list_turnouts():
-    context = AppDataContext(DATA_PATH)
+
 
     # Create rich table
     table = Table(title="Turnotus")

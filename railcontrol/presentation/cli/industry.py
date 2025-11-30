@@ -3,7 +3,8 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from railcontrol.application.app_context import AppDataContext
+
+from railcontrol.presentation.cli.context import context
 from railcontrol.config import DATA_PATH
 
 industry_app = typer.Typer(help="Industry-related commands")
@@ -12,7 +13,6 @@ console = Console()
 
 @industry_app.command("list")
 def list_industries():
-    context = AppDataContext(DATA_PATH)
 
     # Create rich table
     table = Table(title="Industries")
@@ -31,7 +31,6 @@ def list_industries():
 
 @industry_app.command("list_detail")
 def list_industry_detail(industry_id: str):
-    context = AppDataContext(DATA_PATH)
     industry = context.repos.industries.get(industry_id)
 
     # Create HL rich table
